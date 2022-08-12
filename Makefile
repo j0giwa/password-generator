@@ -1,17 +1,40 @@
-# This is am Makefile
-
+# variables
 COMPILER=gcc
 COMPILER_FLAGS=-g -Wall
-OBJS=
-BIN = main
+
+# directorys
+BINDIR=bin
+BIN=$(BINDIR)/password-generator
+SRC=src
+OBJ=obj
+
+# filepatters
+SRCS=$(wildcard $(SRC)/*.[ch])
+OBJS=$(patsubst $(SRC)/*.[ch], $(OBJ)/%.o, $(SRCS))
+
+# Tarball
+TARNAME=password-generator.tar.gz
 
 all:$(BIN)
 
-main: $(OBJS)
-	$(COMPILER) $(COMPILER_FLAGS) $(OBJS) -o main
+#Release Target
+release: $(BIN)
+release: COMPILER_FLAGS=-Wall -O2 -DNDEBUG
+release: clean
 
-%.o: %.c
+# compile .o files
+$(OBJ)/%.o: $(SRC)/%.c
 	$(COMPILER) $(COMPILER_FLAGS) -c $< -o $@
 
+# compile binarys from .o files
+$(BIN): $(OBJS)
+	$(COMPILER) $(COMPILER_FLAGS) $(OBJS) -o $@ 
+
+# remove previous binarys/objs
 clean:
-	$(RM) -r main.c +.o *.dSYM
+	$(RM) -r $(BIN)/* $(BIN)/*
+
+#Make tarball
+tar:
+	$(RM) $(TARNAME)
+	gzip $(TARNAME) $(BIN)
