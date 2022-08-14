@@ -1,23 +1,21 @@
 # variables
+NAME=password-generator
 COMPILER=gcc
 COMPILER_FLAGS=-g -Wall
 
 # directorys
-BINDIR=bin
-BIN=$(BINDIR)/password-generator
-SRC=src
-OBJ=obj
+SRC=./src
+OBJ=./obj
+BINDIR=./bin
 
 # filepatters
 SRCS=$(wildcard $(SRC)/*.[ch])
 OBJS=$(patsubst $(SRC)/*.[ch], $(OBJ)/%.o, $(SRCS))
-
-# Tarball
-TARNAME=password-generator.tar.gz
+BIN=$(BINDIR)/$(NAME)
+TARNAME=$(NAME).tar.gz
 
 all:$(BIN)
 
-#Release Target
 release: $(BIN)
 release: COMPILER_FLAGS=-Wall -O2 -DNDEBUG
 release: clean
