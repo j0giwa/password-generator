@@ -6,9 +6,10 @@
  *
  * @param min bottom limit of integer
  * @param max uppper limit of integer
+ * @param seed seed for the calulation (Will use timestamp if equal to 0)
  *
  * @return int
  */
-int getRandomInt(int min, int max);
+int getRandomInt(int min, int max, int seed);
 
 #endif

@@ -8,9 +8,10 @@
 // custom libs
 #include "numberUtils.h"
 
-int getRandomInt(int min, int max)
+int getRandomInt(int min, int max, int seed)
 {
-    srand(time(0));
+    seed = (seed == 0) ? time(0) : seed; 
+    srand(seed);
 
     int number = (rand() % (min - max + 1)) + min;
 
