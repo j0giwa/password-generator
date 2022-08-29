@@ -23,8 +23,16 @@
 
 The goal is to generate a random string based on parameters.
 
-I might add a GUI either with Python or GTK
-after the main binary is functional.
+|               function                  | implemented |
+| --------------------------------------- | ----------- |
+| generate lowercase letters              |     yes     |
+| generate uppercase letters              |     yes     |
+| generate symbols                        |     yes     |
+| join generated strings                  |     yes     |
+| Randomise to order of the joned string  |      no     |
+| Documantation ()mangage/ --help         |      no     |
+| Commandline flags                       |      no     |
+| make install target                      |      no     |
 
 
 ## Install
