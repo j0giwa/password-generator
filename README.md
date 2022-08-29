@@ -30,9 +30,9 @@ The goal is to generate a random string based on parameters.
 | generate symbols                        |     yes     |
 | join generated strings                  |     yes     |
 | Randomise to order of the joned string  |      no     |
-| Documantation ()mangage/ --help         |      no     |
+| Documantation (man page/ --help)        |      no     |
 | Commandline flags                       |      no     |
-| make install target                      |      no     |
+| make install target                     |      no     |
 
 
 ## Install
