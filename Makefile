@@ -16,6 +16,10 @@ TARNAME=$(NAME).tar.gz
 
 all:$(BIN)
 
+# Testing
+run:$(BIN)
+	time($(BINDIR)/$(NAME))
+
 release: $(BIN)
 release: COMPILER_FLAGS=-Wall -O2 -DNDEBUG
 release: clean
