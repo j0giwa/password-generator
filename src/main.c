@@ -32,8 +32,8 @@ char *getRandomSymbols(int length) {
     char *asciichar = malloc(sizeof(int) * 1);
     char *returnValue = malloc(sizeof(int) * length);
 
-    int firstSymbolChar = 33;    // Corresponds to letter '!'
-    int lastSymbolChar  = 47;   // Corresponds to letter '/'
+    int firstSymbolChar = 33;    // Corresponds to '!'
+    int lastSymbolChar  = 47;   // Corresponds to '/'
 
     for (int i = 0; i < length; i++) {
         asciival = getRandomInt(firstSymbolChar, lastSymbolChar);
@@ -46,7 +46,7 @@ char *getRandomSymbols(int length) {
 }
 
 /**
- * @brief Generate a set of random charackters
+ * @brief Generate a set of random characters
  *
  * @param length the amount off characters
  * @param uppercase set if the characetrs should be in uppercase or not
@@ -61,10 +61,10 @@ char *getRandomChars(int length, bool uppercase) {
     char *asciichar = malloc(sizeof(int) * 1);
     char *returnValue = malloc(sizeof(int) * length);
 
-    int firstLowerChar = 97;    // Corresponds to letter 'a'
-    int lastLowerChar  = 122;   // Corresponds to letter 'z'
-    int firstUpperChar = 65;    // Corresponds to letter 'A'
-    int lastUpperChar  = 90;    // Corresponds to letter 'Z'
+    int firstLowerChar = 97;    // Corresponds to 'a'
+    int lastLowerChar  = 122;   // Corresponds to 'z'
+    int firstUpperChar = 65;    // Corresponds to 'A'
+    int lastUpperChar  = 90;    // Corresponds to 'Z'
 
     if (uppercase) {
         for (int i = 0; i < length; i++) {
@@ -85,6 +85,29 @@ char *getRandomChars(int length, bool uppercase) {
     return returnValue;
 }
 
+/**
+ * @brief Regorganise a string ins an random order
+ *
+ * @param input input
+ *
+ * @return *char
+ */
+void scrambler(char *input) {
+
+
+
+}
+
+char *mergestring(char *uppercase, char *lowercase, char *symbols)
+{
+    // TODO: change 24 with actual stringlength
+    char *str = malloc(sizeof(char) * 24); 
+    strcat(str, uppercase);
+    strcat(str, lowercase);
+    strcat(str, symbols);
+    return str;
+}
+
 // main() initialiser
 int main(int argc, char **argv) {
     // If argc is for some reason eaqual to 0,
@@ -97,12 +120,17 @@ int main(int argc, char **argv) {
 
     srand(time(0));
 
-    int i = getRandomInt(4, 16);
-    
+    int i = getRandomInt(4, 8);
+    char *uppercase = getRandomChars(i, true);
+    char *lowercase = getRandomChars(i, false);
+    char *symbols = getRandomSymbols(i);
+
     printf(ANSI_YELLOW "Random Number Test:   " ANSI_BLUE "%i\n" ANSI_RESET, i);
-    printf(ANSI_YELLOW "Uppercase ASCII-test: " ANSI_BLUE "%s\n" ANSI_RESET, getRandomChars(i, true));
-    printf(ANSI_YELLOW "LowerCase ASCII-test: " ANSI_BLUE "%s\n" ANSI_RESET, getRandomChars(i, false));
-    printf(ANSI_YELLOW "Symbol ASCII-test:    " ANSI_BLUE "%s\n" ANSI_RESET, getRandomSymbols(i));
+    printf(ANSI_YELLOW "Uppercase ASCII-test: " ANSI_BLUE "%s\n" ANSI_RESET, uppercase);
+    printf(ANSI_YELLOW "LowerCase ASCII-test: " ANSI_BLUE "%s\n" ANSI_RESET, lowercase);
+    printf(ANSI_YELLOW "Symbol ASCII-test:    " ANSI_BLUE "%s\n" ANSI_RESET, symbols);
+    printf(ANSI_YELLOW "Join-test:            " ANSI_BLUE "%s\n" ANSI_RESET, mergestring(uppercase, lowercase, symbols));
+    // printf(ANSI_YELLOW "Scramble-test:        " ANSI_BLUE "%s\n" ANSI_RESET, scrambler(i));
 
     return 0;
 }
