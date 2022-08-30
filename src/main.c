@@ -85,19 +85,6 @@ char *getRandomChars(int length, bool uppercase) {
     return returnValue;
 }
 
-/**
- * @brief Regorganise a string ins an random order
- *
- * @param input input
- *
- * @return *char
- */
-void scrambler(char *input) {
-
-
-
-}
-
 char *mergestring(char *uppercase, char *lowercase, char *symbols)
 {
     // TODO: change 24 with actual stringlength
@@ -106,6 +93,33 @@ char *mergestring(char *uppercase, char *lowercase, char *symbols)
     strcat(str, lowercase);
     strcat(str, symbols);
     return str;
+}
+
+/**
+ * @brief Regorganise a string ins an random order
+ *
+ * @param input input
+ *
+ * @return *char
+ */
+char *scrambler(char *input)
+{
+    char oldChar;
+    char newChar;
+    int index = 0;
+
+    for (int i = 0; i < 24 ; i++)
+    {
+        index = getRandomInt(0, 24);
+
+        oldChar = input[i];
+        newChar = input[index];
+
+        input[i] = newChar;
+        input[index] = oldChar;
+    }
+
+    return input;
 }
 
 // main() initialiser
@@ -120,17 +134,13 @@ int main(int argc, char **argv) {
 
     srand(time(0));
 
-    int i = getRandomInt(4, 8);
-    char *uppercase = getRandomChars(i, true);
-    char *lowercase = getRandomChars(i, false);
-    char *symbols = getRandomSymbols(i);
+    char *uppercase = getRandomChars(8, true);
+    char *lowercase = getRandomChars(8, false);
+    char *symbols = getRandomSymbols(8);
+    char *join = mergestring(uppercase, lowercase, symbols);
+    char *scramble = scrambler(join);
 
-    printf(ANSI_YELLOW "Random Number Test:   " ANSI_BLUE "%i\n" ANSI_RESET, i);
-    printf(ANSI_YELLOW "Uppercase ASCII-test: " ANSI_BLUE "%s\n" ANSI_RESET, uppercase);
-    printf(ANSI_YELLOW "LowerCase ASCII-test: " ANSI_BLUE "%s\n" ANSI_RESET, lowercase);
-    printf(ANSI_YELLOW "Symbol ASCII-test:    " ANSI_BLUE "%s\n" ANSI_RESET, symbols);
-    printf(ANSI_YELLOW "Join-test:            " ANSI_BLUE "%s\n" ANSI_RESET, mergestring(uppercase, lowercase, symbols));
-    // printf(ANSI_YELLOW "Scramble-test:        " ANSI_BLUE "%s\n" ANSI_RESET, scrambler(i));
+    printf(ANSI_YELLOW "Password:        " ANSI_BLUE "%s\n" ANSI_RESET, scramble);
 
     return 0;
 }

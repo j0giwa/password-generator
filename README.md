@@ -32,7 +32,7 @@ The goal is to generate a random string based on parameters.
 | Randomise to order of the joned string  |      no     |
 | Documantation ()mangage/ --help         |      no     |
 | Commandline flags                       |      no     |
-| make install target                      |      no     |
+| make install target                     |      no     |
 
 
 ## Install
