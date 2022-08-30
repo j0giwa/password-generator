@@ -25,12 +25,12 @@ The goal is to generate a random string based on parameters.
 
 |               function                  | implemented |
 | --------------------------------------- | ----------- |
-| generate lowercase letters              |     yes     |
-| generate uppercase letters              |     yes     |
-| generate symbols                        |     yes     |
-| join generated strings                  |     yes     |
-| Randomise to order of the joned string  |      no     |
-| Documantation ()mangage/ --help         |      no     |
+| Generate lowercase letters              |     yes     |
+| Generate uppercase letters              |     yes     |
+| Generate symbols                        |     yes     |
+| Join the generated strings              |     yes     |
+| Randomise to order of the joined string |      no     |
+| Documentation (man page / --help)       |      no     |
 | Commandline flags                       |      no     |
 | make install target                     |      no     |
 
