@@ -29,7 +29,7 @@ The goal is to generate a random string based on parameters.
 | Generate uppercase letters              |     yes     |
 | Generate symbols                        |     yes     |
 | Join the generated strings              |     yes     |
-| Randomise to order of the joined string |      no     |
+| Randomise to order of the joined string |     yes     |
 | Documentation (man page / --help)       |      no     |
 | Commandline flags                       |      no     |
 | make install target                     |      no     |
