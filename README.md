@@ -41,12 +41,11 @@ make
 ```
 
 The binary is placed in the bin/ directory of the project files.
-Since the project is in a veeery early stage of development, it does not do much 
 
 
 ## Usage
  
-The current version is still in development, so erros should be expected.
+The current version is still in development, so errors should be expected.
 
 ```sh
 password-generator
@@ -59,7 +58,7 @@ Optional flags can be suplied
 
 |  flag  |           function           |
 | ------ | -----------------------------|
-|   -l   |  specify the length          |
+|   -l   |  specify the length (WIP)    |
 |   -L   |  enable lowercase characters |
 |   -U   |  enable uppercase characters |
 |   -S   |  enable sepcial characters   |
