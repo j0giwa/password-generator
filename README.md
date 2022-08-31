@@ -10,7 +10,6 @@
   <img src="https://img.shields.io/badge/os-mac-brightgreen">
 </p>
 
-
 ## Table of Contents
 
 - [Development goals](#Development-goals)
@@ -20,8 +19,6 @@
 
 
 ## Development goals
-
-The goal is to generate a random string based on parameters.
 
 |               function                  | implemented |
 | --------------------------------------- | ----------- |
@@ -42,14 +39,38 @@ The current way of installing it is via the MakeFile
 ```sh
 make
 ```
+
 The binary is placed in the bin/ directory of the project files.
 Since the project is in a veeery early stage of development, it does not do much 
 
 
 ## Usage
  
-The current version is in a veeery early stage of development, so it does not do much.
-Running the binary will print some debugvalues to stdout.
+The current version is still in development, so erros should be expected.
+
+```sh
+password-generator
+```
+
+will output a random String with the default parameters
+
+
+Optional flags can be suplied
+
+|  flag  |           function           |
+| ------ | -----------------------------|
+|   -l   |  specify the length          |
+|   -L   |  enable lowercase characters |
+|   -U   |  enable uppercase characters |
+|   -S   |  enable sepcial characters   |
+
+example:
+
+```sh
+password-generator -l 12 -U -L
+```
+
+will output a 12 character long strin containing only upper- and lowercase chacracters
 
 
 ## Disclaimer
