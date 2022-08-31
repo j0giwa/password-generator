@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <time.h>
+
 // Custom Libs
 #include "numberUtils.h"
 
@@ -16,11 +17,9 @@
 #define ANSI_CYAN "\x1b[36m"
 #define ANSI_RESET "\x1b[0m"
 
-char *getRandomSymbols(int length)
-{
+char *getRandomSymbols(int length) {
     // Guardstatement to prevent invalid parameters
-    if (length <= 0)
-        return NULL;
+    if (length <= 0) return "";
 
     int asciival = 0;
     char *asciichar = malloc(sizeof(int) * 1);
@@ -40,11 +39,9 @@ char *getRandomSymbols(int length)
     return returnValue;
 }
 
-char *getRandomChars(int length, bool uppercase)
-{
+char *getRandomChars(int length, bool uppercase) {
     // Guardstatement to prevent invalid parameters
-    if (length <= 0)
-        return NULL;
+    if (length <= 0) return "";
 
     int asciival = 0;
     char *asciichar = malloc(sizeof(int) * 1);
@@ -77,25 +74,28 @@ char *getRandomChars(int length, bool uppercase)
     return returnValue;
 }
 
-char *mergestring(char *uppercase, char *lowercase, char *symbols)
-{
+char *mergestring(char *uppercase, char *lowercase, char *symbols, int length) {
     // TODO: change 24 with actual stringlength
-    char *str = malloc(sizeof(char) * 24);
-    strcat(str, uppercase);
-    strcat(str, lowercase);
-    strcat(str, symbols);
+    char *str = malloc(sizeof(char) * length);
+
+    if (uppercase != "") strcat(str, uppercase);
+
+    if (lowercase != "") strcat(str, lowercase);
+
+    if (symbols != "") strcat(str, symbols);
+
     return str;
 }
 
-char *scrambler(char *input)
+char *scrambler(char *input, int length)
 {
     char oldChar;
     char newChar;
     int index = 0;
 
-    for (int i = 0; i < 24; i++)
+    for (int i = 0; i >= length; i++)
     {
-        index = getRandomInt(0, 24);
+        index = getRandomInt(0, length);
 
         oldChar = input[i];
         newChar = input[index];
@@ -107,18 +107,53 @@ char *scrambler(char *input)
     return input;
 }
 
-void passwordGenerator()
-{
+int *intSplitter(int integer, int parts) {
+
+    int *returnVal = NULL;
+    int calcVal = 0;
+
+    for (int i = 0 ; i < parts ; i++) {
+
+        calcVal = getRandomInt(1, integer);
+        returnVal[i] = calcVal;
+        printf("returnVal[%d]: %d", i, calcVal);
+        integer = integer - calcVal;
+    }
+
+    return returnVal;
+}
+
+void passwordGenerator(int length, bool lowercase, bool uppercase, bool symbols) {
 
     srand(time(0));
 
-    char *uppercase = getRandomChars(8, true);
-    char *lowercase = getRandomChars(8, false);
-    char *symbols = getRandomSymbols(8);
-    char *join = mergestring(uppercase, lowercase, symbols);
-    char *scramble = scrambler(join);
+    //int *amount = intSplitter(length, 3);
 
-    printf(ANSI_YELLOW "Password:        " ANSI_BLUE "%s\n" ANSI_RESET, scramble);
+    int testDivider = length / 3; // just for debug
+    int lowercaseCount = (lowercase) ? testDivider : 0;
+    int uppercaseCount = (uppercase) ? testDivider : 0;
+    int symbolsCount = (symbols) ? testDivider : 0;
+    int totalCount = lowercaseCount + uppercaseCount + symbolsCount; //just for debug
+
+    //printf("Lowercase-characters: %d\n", lowercaseCount);
+    //printf("Uppercase-characters: %d\n", uppercaseCount);
+    //printf("Symbol-characters: %d\n", symbolsCount);
+
+    // char *lowercaseChars = getRandomChars(lowercaseCount, false);
+    // char *uppercaseChars = getRandomChars(uppercaseCount, true);
+    // char *symbolsChars = getRandomSymbols(symbolsCount);
+
+    char *lowercaseChars = getRandomChars(lowercaseCount, false);
+    char *uppercaseChars = getRandomChars(uppercaseCount, true);
+    char *symbolsChars = getRandomSymbols(symbolsCount);
+    char *mergedChars = mergestring(lowercaseChars, uppercaseChars, symbolsChars, totalCount);
+    char *scrambleChars = scrambler(mergedChars, totalCount);
+
+    // printf(ANSI_YELLOW "LowerCase ASCII-test: " ANSI_BLUE "%s\n" ANSI_RESET, lowercaseChars);
+    // printf(ANSI_YELLOW "Uppercase ASCII-test: " ANSI_BLUE "%s\n" ANSI_RESET, uppercaseChars);
+    // printf(ANSI_YELLOW "Symbol ASCII-test:    " ANSI_BLUE "%s\n" ANSI_RESET, symbolsChars);
+    
+    printf(ANSI_YELLOW "Password:        " ANSI_BLUE "%s\n" ANSI_RESET, scrambleChars);
 
     return;
 }

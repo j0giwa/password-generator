@@ -24,8 +24,12 @@ char * getRandomSymbols(int length);
  */
 char *getRandomChars(int length, bool uppercase);
 
-char *mergestring(char *uppercase, char *lowercase, char *symbols);
+char *mergestring(char *uppercase, char *lowercase, char *symbols, int length);
 
-void passwordGenerator();
+char *scrambler(char *input, int length);
+
+    int *intSplitter(int integer, int parts);
+
+void passwordGenerator(int length, bool lowercase, bool uppercase, bool symbols);
 
 #endif
