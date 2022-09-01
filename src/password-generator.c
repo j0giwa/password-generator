@@ -87,13 +87,12 @@ char *mergestring(char *uppercase, char *lowercase, char *symbols, int length) {
     return str;
 }
 
-char *scrambler(char *input, int length)
-{
+char *scrambler(char *input, int length) {
     char oldChar;
     char newChar;
     int index = 0;
 
-    for (int i = 0; i >= length; i++)
+    for (int i = 0; i <= (length-1); i++)
     {
         index = getRandomInt(0, length);
 
