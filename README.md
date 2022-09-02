@@ -26,7 +26,7 @@ make
 You can copy the binary inside the ./bin into your usr/bin directory. 
 
 ```sh
-sudo cp ./bin /usr/bin
+udo cp ./bin/password-generator /usr/bin
 ```
 
 ## Usage
