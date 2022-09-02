@@ -12,40 +12,25 @@
 
 ## Table of Contents
 
-- [Development goals](#Development-goals)
 - [Install](#Install)
 - [Usage](#Usage)
 - [Disclaimer](#Disclaimer)
 
-
-## Development goals
-
-|               function                  | implemented |
-| --------------------------------------- | ----------- |
-| Generate lowercase letters              |     yes     |
-| Generate uppercase letters              |     yes     |
-| Generate symbols                        |     yes     |
-| Join the generated strings              |     yes     |
-| Randomise to order of the joined string |     yes     |
-| Documentation (man page / --help)       |      no     |
-| Commandline flags                       |      no     |
-| make install target                     |      no     |
-
-
 ## Install
- 
-The current way of installing it is via the MakeFile
+
+It is recomended to recompile via the MakeFile first
 
 ```sh
 make
 ```
+You can copy the binary inside the ./bin into your usr/bin directory. 
 
-The binary is placed in the bin/ directory of the project files.
-
+```sh
+sudo cp ./bin /usr/bin
+```
 
 ## Usage
- 
-The current version is still in development, so errors should be expected.
+
 
 ```sh
 password-generator
@@ -53,12 +38,13 @@ password-generator
 
 will output a random String with the default parameters
 
-
-Optional flags can be suplied
+Optional flags can be suplied,
+however doing so will reset all default values,
+so you need to set at leas on of these(-L,-S,-U)
 
 |  flag  |           function           |
 | ------ | -----------------------------|
-|   -l   |  specify the length (WIP)    |
+|   -l   |  specify the length          |
 |   -L   |  enable lowercase characters |
 |   -U   |  enable uppercase characters |
 |   -S   |  enable sepcial characters   |
@@ -68,8 +54,7 @@ example:
 ```sh
 password-generator -l 12 -U -L
 ```
-
-will output a 12 character long strin containing only upper- and lowercase chacracters
+will output a 12 character string containing upper- and lowercase chacracters.
 
 
 ## Disclaimer
