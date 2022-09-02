@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
     if (argc > 6) return 2;
 
     // default values (can be overwritten)
-    int length = 9;
+    int length = 8;
     bool uppercase = true;
     bool lowercase = true;
     bool symbols   = true;
@@ -55,7 +55,6 @@ int main(int argc, char **argv) {
             }
         }           
     }
-    printf("Chars:%d\n", length);
     passwordGenerator(length, lowercase, uppercase, symbols);
     return 0;
 }
