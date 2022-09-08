@@ -43,7 +43,6 @@ Optional flag can be suplied.
 | flag          | function                           |
 | ------------- | ---------------------------------- |
 | -l <amount>   | specify the amount of characters   |
-| ------------- | ---------------------------------- |
 
 example:
 
