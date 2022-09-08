@@ -4,10 +4,10 @@
 // Standard Libs
 #include <stdbool.h>
 
-char *mergestring(char *uppercase, char *lowercase, char *symbols, int length);
+char *mergestring(char *lowercase, char *uppercase, char *symbols);
 
 char *scrambler(char *input, int length);
 
-void passwordGenerator(int length, bool lowercase, bool uppercase, bool symbols);
+void passwordGenerator(int length);
 
 #endif

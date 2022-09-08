@@ -23,14 +23,14 @@ It is recomended to recompile via the MakeFile first
 ```sh
 make
 ```
-You can copy the binary inside the ./bin into your usr/bin directory. 
+
+You can copy the binary inside the ./bin into your usr/bin directory.
 
 ```sh
-udo cp ./bin/password-generator /usr/bin
+sudo cp ./bin/password-generator /usr/bin
 ```
 
 ## Usage
-
 
 ```sh
 password-generator
@@ -38,24 +38,20 @@ password-generator
 
 will output a random String with the default parameters
 
-Optional flags can be suplied,
-however doing so will reset all default values,
-so you need to set at leas on of these(-L,-S,-U)
+Optional flag can be suplied.
 
-|  flag  |           function           |
-| ------ | -----------------------------|
-|   -l   |  specify the length          |
-|   -L   |  enable lowercase characters |
-|   -U   |  enable uppercase characters |
-|   -S   |  enable sepcial characters   |
+| flag          | function                           |
+| ------------- | ---------------------------------- |
+| -l <amount>   | specify the amount of characters   |
+| ------------- | ---------------------------------- |
 
 example:
 
 ```sh
-password-generator -l 12 -U -L
+password-generator -l 12
 ```
-will output a 12 character string containing upper- and lowercase chacracters.
 
+will output a 12 character string.
 
 ## Disclaimer
 

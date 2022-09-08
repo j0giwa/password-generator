@@ -20,8 +20,8 @@ char *getRandomSymbols(int length) {
     int firstSymbolChar = 33; // Corresponds to '!'
     int lastSymbolChar = 47;  // Corresponds to '/'
 
-    for (int i = 0; i < length; i++)
-    {
+    for (int i = 0; i < length; i++) {
+
         asciival = getRandomInt(firstSymbolChar, lastSymbolChar);
         // Converting ascii code to character
         snprintf(asciichar, 2, "%c", asciival);
@@ -71,14 +71,15 @@ int *intSplitter(int count, int target) {
     // Guardstatement to prevent invalid parameters
     if (target == 0 || count == 0 ) return 0;
 
-    const int minValue = 1;
-    const int maxValue = 9;
+    const double minValue = 1;
+    const double maxValue = 9;
+
+    double currentsum = 0;
+    double low = 0;
+    double high = 0;
+    double calc = 0;
 
     int *result = malloc(sizeof(int) * count);
-    int currentsum = 0;
-    int low = 0;
-    int high = 0;
-    int calc = 0;
 
     for (int i = 0; i < count; i++) {
 
@@ -89,8 +90,8 @@ int *intSplitter(int count, int target) {
         high = calc > maxValue ? maxValue : calc;
 
         result[i] = getRandomInt(low, high);
-        currentsum += result[i];
-
+        currentsum += (int) result[i];
     }
+
     return result;
 }
