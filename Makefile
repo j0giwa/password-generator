@@ -20,9 +20,11 @@ all:$(BIN)
 run:$(BIN)
 	time($(BINDIR)/$(NAME))
 
-release: $(BIN)
-release: COMPILER_FLAGS=-Wall -O2 -DNDEBUG
-release: clean
+install: $(BIN)
+install: COMPILER_FLAGS=-Wall -O2 -DNDEBUG
+install: clean
+	cp ./bin/password-generator /usr/bin
+	cp ./doc/manpage/password-generator.1 /usr/local/man/man1/password-generator.1
 
 # compile .o files
 $(OBJ)/%.o: $(SRC)/%.c

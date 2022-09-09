@@ -18,16 +18,10 @@
 
 ## Install
 
-It is recomended to recompile via the MakeFile first
+Install it via make
 
 ```sh
-make
-```
-
-You can copy the binary inside the ./bin into your usr/bin directory.
-
-```sh
-sudo cp ./bin/password-generator /usr/bin
+sudo make install
 ```
 
 ## Usage

@@ -21,19 +21,40 @@ int main(int argc, char **argv) {
 
         // itterration starting at the second argument, path isn't used
         for (int arg = 1; arg < argc; arg++) {
+            
+            // print help
+            if (strcmp("-v", argv[arg]) == 0) {
+                
+                printf("Password-generator\nVersion: 1.0.0.0");
+                return EXIT_SUCCESS;
+                
+                continue;
+            }
 
-            // length argument
+            // print version Information
+            if (strcmp("-v", argv[arg]) == 0) {
+                
+                printf("Password-generator\nVersion: 1.0.0.0");
+                return EXIT_SUCCESS;
+                
+                continue;
+            }
+
+            // Specify string length
             if (strcmp("-l", argv[arg]) == 0) {
+
                 length = atoi(argv[++arg]);
                 arg--;
+
                 if (length < 8) {
+
                     printf("A password with less than 8 character is not recomended,\nexiting..\n");
-                    return 2;
+                    return EXIT_FAILURE;
                 }
                 continue;
             }
         }           
     }
     passwordGenerator(length);
-    return 0;
+    return EXIT_SUCCESS;
 }
