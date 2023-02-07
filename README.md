@@ -45,9 +45,3 @@ password-generator -l 12
 ```
 
 will output a 12 character string.
-
-## Disclaimer
-
-Since this is my first project written in C,
-It won't be as well structured or usable as the projects made by seasoned developers,
-however I will do my best.
