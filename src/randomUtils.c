@@ -4,94 +4,102 @@
 #include <string.h>
 #include <sys/random.h>
 
-int getRandomInt(int min, int max) {
-    int number = (rand() % (min - max + 1)) + min;
-    return number;
+int getRandomInt(min, max) 
+int min;
+int max;
+{
+	int number = (rand() % (min - max + 1)) + min;
+	return number;
 }
 
-char *getRandomSymbols(int length) {
-    // Guardstatement to prevent invalid parameters
-    if (length <= 0) return "";
-
-    int asciival = 0;
-    char *asciichar = malloc(sizeof(int) * 1);
-    char *returnValue = malloc(sizeof(int) * length);
-
-    int firstSymbolChar = 33; // Corresponds to '!'
-    int lastSymbolChar = 47;  // Corresponds to '/'
-
-    for (int i = 0; i < length; i++) {
-
-        asciival = getRandomInt(firstSymbolChar, lastSymbolChar);
-        // Converting ascii code to character
-        snprintf(asciichar, 2, "%c", asciival);
-        strncpy(&returnValue[i], asciichar, 2);
-    }
-
-    return returnValue;
+char* getRandomSymbols(length)
+int length;
+{
+	int i;
+	int asciival;
+	char* asciichar;
+	char* returnValue;
+	int firstSymbolChar;
+	int lastSymbolChar;
+	if (length <= 0)
+		return "";
+	asciival = 0;
+	asciichar = (char *) malloc(sizeof(int) * 1);
+	returnValue = (char *) malloc(sizeof(int) * length);
+	firstSymbolChar = 33; /* Corresponds to '!' */
+	lastSymbolChar = 47;  /* Corresponds to '/' */
+	for (i = 0; i < length; i++) {
+		asciival = getRandomInt(firstSymbolChar, lastSymbolChar);
+		snprintf(asciichar, 2, "%c", asciival);
+		strncpy(&returnValue[i], asciichar, 2);
+	}
+	return returnValue;
 }
 
-char *getRandomChars(int length, bool uppercase) {
-    // Guardstatement to prevent invalid parameters
-    if (length <= 0) return "";
+char* getRandomChars(length, uppercase)
+int length;
+int uppercase;
+{
+    	int i;
+	int asciival;
+    	char* asciichar;
+    	char* returnValue;
+    	int firstChar;
+    	int lastChar;
 
-    int asciival = 0;
-    char *asciichar = malloc(sizeof(int) * 1);
-    char *returnValue = malloc(sizeof(int) * length);
+	if (length <= 0)
+		return "";
 
-    int firstLowerChar = 97; // Corresponds to 'a'
-    int lastLowerChar = 122; // Corresponds to 'z'
-    int firstUpperChar = 65; // Corresponds to 'A'
-    int lastUpperChar = 90;  // Corresponds to 'Z'
+    	asciichar = (char*) malloc(sizeof(int) * 1);
+    	returnValue = (char*) malloc(sizeof(int) * length);
 
-    if (uppercase)
-    {
-        for (int i = 0; i < length; i++)
-        {
-            asciival = getRandomInt(firstUpperChar, lastUpperChar);
-            // Converting ascii code to character
-            snprintf(asciichar, 2, "%c", asciival);
-            strncpy(&returnValue[i], asciichar, 2);
-        }
-        return returnValue;
-    }
+    	firstChar = 97; /* corresponds to 'a' */
+    	lastChar = 122; /* corresponds to 'z' */
+    	
+	if (uppercase) {
+		firstChar -= 32; /* now corresponds to 'A' */
+    		lastChar -= 32;  /* now corresponds to 'Z' */
+	}
 
-    for (int i = 0; i < length; i++)
-    {
-        asciival = getRandomInt(firstLowerChar, lastLowerChar);
-        // Converting ascii code to character
-        snprintf(asciichar, 2, "%c", asciival);
-        strncpy(&returnValue[i], asciichar, 2);
-    }
-    return returnValue;
+	for (i = 0; i < length; i++) {
+		asciival = getRandomInt(firstChar, lastChar);
+		snprintf(asciichar, 2, "%c", asciival);
+		strncpy(&returnValue[i], asciichar, 2);
+	}
+	return returnValue;
 }
 
-int *intSplitter(int count, int target) {
 
-    // Guardstatement to prevent invalid parameters
-    if (target == 0 || count == 0 ) return 0;
-
-    const double minValue = 1;
-    const double maxValue = 9;
-
-    double currentsum = 0;
-    double low = 0;
-    double high = 0;
-    double calc = 0;
-
-    int *result = malloc(sizeof(int) * count);
-
-    for (int i = 0; i < count; i++) {
-
-        calc = (target - currentsum) - (maxValue * (count - 1 - i));
-        low = calc < minValue ? minValue : calc;
-
-        calc = (target - currentsum) - (minValue * (count - 1 - i));
-        high = calc > maxValue ? maxValue : calc;
-
-        result[i] = getRandomInt(low, high);
-        currentsum += (int) result[i];
-    }
-
-    return result;
+int* intSplitter(count, target)
+int count;
+int target;
+{
+	int i;
+	double minValue;
+	double maxValue;
+	double currentsum;
+	double low;
+	double high;
+	double calc;
+	int* result;
+    
+    	if (target == 0 || count == 0)
+        	return 0;
+	
+	minValue = 1;
+	maxValue = 9;
+	currentsum = 0;
+	low = 0;
+	high = 0;
+	calc = 0;
+	result = (int *) malloc(sizeof(int) * count);
+	for (i = 0; i < count; i++) {
+		calc = (target - currentsum) - (maxValue * (count - 1 - i));
+		low = calc < minValue ? minValue : calc;
+		calc = (target - currentsum) - (minValue * (count - 1 - i));
+		high = calc > maxValue ? maxValue : calc;
+		result[i] = getRandomInt((int) low, (int) high);
+		currentsum += result[i];
+	}
+	return result;
 }
