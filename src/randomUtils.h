@@ -13,13 +13,14 @@
  */
 int getRandomInt(int min, int max);
 
-/**@brief Generate a set of random symbols
+/**
+ * @brief Generate a set of random symbols
  *
  * @param length the amount off symbols
  *
- * @ return *char
+ * @return *char
  */
-char *getRandomSymbols(int length);
+char* getRandomSymbols(int length);
 
 /**
  * @brief Generate a set of random characters
@@ -29,8 +30,8 @@ char *getRandomSymbols(int length);
  *
  * @return *char
  */
-char *getRandomChars(int length, bool uppercase);
+char* getRandomChars(int length, bool uppercase);
 
-int *intSplitter(int integer, int parts);
+int* intSplitter(int integer, int parts);
 
 #endif
