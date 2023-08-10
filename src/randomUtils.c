@@ -15,21 +15,17 @@ int max;
 char* getRandomSymbols(length)
 int length;
 {
-	int i;
-	int asciival;
-	char* asciichar;
-	char* returnValue;
-	int firstSymbolChar;
-	int lastSymbolChar;
+	int i, asciival, firstCharCode, lastCharCode;
+	char *asciichar, *returnValue;
 	if (length <= 0)
 		return "";
 	asciival = 0;
 	asciichar = (char *) malloc(sizeof(int) * 1);
 	returnValue = (char *) malloc(sizeof(int) * length);
-	firstSymbolChar = 33; /* Corresponds to '!' */
-	lastSymbolChar = 47;  /* Corresponds to '/' */
+	firstCharCode = 33; /* Corresponds to '!' */
+	lastCharCode = 47;  /* Corresponds to '/' */
 	for (i = 0; i < length; i++) {
-		asciival = getRandomInt(firstSymbolChar, lastSymbolChar);
+		asciival = getRandomInt(firstCharCode, lastCharCode);
 		snprintf(asciichar, 2, "%c", asciival);
 		strncpy(&returnValue[i], asciichar, 2);
 	}
@@ -40,29 +36,20 @@ char* getRandomChars(length, uppercase)
 int length;
 int uppercase;
 {
-    	int i;
-	int asciival;
-    	char* asciichar;
-    	char* returnValue;
-    	int firstChar;
-    	int lastChar;
-
+    	int i, asciival, firstCharCode, lastCharCode;
+    	char *asciichar, *returnValue;
 	if (length <= 0)
 		return "";
-
     	asciichar = (char*) malloc(sizeof(int) * 1);
     	returnValue = (char*) malloc(sizeof(int) * length);
-
-    	firstChar = 97; /* corresponds to 'a' */
-    	lastChar = 122; /* corresponds to 'z' */
-    	
+    	firstCharCode = 97; /* corresponds to 'a' */
+    	lastCharCode = 122; /* corresponds to 'z' */
 	if (uppercase) {
-		firstChar -= 32; /* now corresponds to 'A' */
-    		lastChar -= 32;  /* now corresponds to 'Z' */
+		firstCharCode -= 32; /* now corresponds to 'A' */
+    		lastCharCode -= 32;  /* now corresponds to 'Z' */
 	}
-
 	for (i = 0; i < length; i++) {
-		asciival = getRandomInt(firstChar, lastChar);
+		asciival = getRandomInt(firstCharCode, lastCharCode);
 		snprintf(asciichar, 2, "%c", asciival);
 		strncpy(&returnValue[i], asciichar, 2);
 	}
@@ -74,18 +61,10 @@ int* intSplitter(count, target)
 int count;
 int target;
 {
-	int i;
-	double minValue;
-	double maxValue;
-	double currentsum;
-	double low;
-	double high;
-	double calc;
-	int* result;
-    
+	int i, *result;
+	double minValue, maxValue, currentsum, low, high, calc;
     	if (target == 0 || count == 0)
         	return 0;
-	
 	minValue = 1;
 	maxValue = 9;
 	currentsum = 0;

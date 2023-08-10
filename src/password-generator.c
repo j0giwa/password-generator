@@ -11,8 +11,10 @@ char* lowercase;
 char* uppercase;
 char* symbols;
 {
-	int charCount = strlen(lowercase) + strlen(uppercase) + strlen(symbols);
-	char *str = malloc(sizeof(char) * charCount);
+	int charCount;
+	char *str; 
+	charCount = strlen(lowercase) + strlen(uppercase) + strlen(symbols);
+	str = malloc(sizeof(char) * charCount);
 	strcat(str, uppercase);
 	strcat(str, lowercase);
 	strcat(str, symbols);
@@ -23,10 +25,10 @@ char* scrambler(input, length)
 char* input;
 int length;
 {
-	char* output = input;
-	char oldChar;
-	char newChar;
-	int index = 0;
+	int index;
+	char *output, oldChar, newChar;
+	index = 0;
+	output = input;
 	for (int i = 0; i <= (length-1); i++) {
 		index = getRandomInt(0, length);
 		oldChar = output[i];
@@ -40,15 +42,8 @@ int length;
 void passwordGenerator(length)
 int length;
 {
-	int* amount;
-	int lowerCount;
-	int upperCount;
-	int symCount;
-	char* lowerChars;
-	char* upperChars;
-	char* symChars;
-	char* password;
-	char* scrambleChars;
+	int *amount, lowerCount, upperCount, symCount;
+	char *lowerChars, *upperChars, *symChars, *password, *scrambleChars;
 	srand(time(0));
 	amount = intSplitter(3, length);
 	lowerCount = amount[0];
