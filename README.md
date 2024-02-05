@@ -30,7 +30,7 @@ password-generator
 
 will output a random String with the default parameters
 
-Optional flag can be suplied.
+Optional flags can be supplied.
 
 | flag          | function                           |
 | ------------- | ---------------------------------- |
@@ -41,5 +41,4 @@ example:
 ```sh
 password-generator -l 12
 ```
-
 will output a 12 character string.
