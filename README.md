@@ -1,9 +1,7 @@
 <h1 align="center">
   password-generator
 </h1>
-<h2 align="center">
-  An educational project to teach myself the C programming language.
-</h2>
+
 <p align=center>
   <br>
   <img src="https://img.shields.io/badge/os-linux-brightgreen">
